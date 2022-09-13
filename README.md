@@ -14,7 +14,7 @@ https://asgmt2-django-mvt.herokuapp.com/katalog/
 
 1. Client puts out a request to the Django web application
 2. The URLS component, urls.py, send out a request object as a function call to the View component according to the path requested
-3. The 
+3. The View component 
 
 #### Explain why do we use virtual environments? Let's say, if we do not use the virtual environments, can we still create a Django web application?
 
