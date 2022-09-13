@@ -2,7 +2,10 @@
 
 Platform-Based Programming (CSGE602022) - Organized by the Faculty of Computer Science Universitas Indonesia, Odd Semester 2022/2023
 
-*Read this in other languages: [Indonesian](README.md), [English](README.en.md)*
+*Read this in other languages: [Indonesian](README.id.md), [English](README.md)*
+
+## Application
+https://asgmt2-django-mvt.herokuapp.com/katalog/
 
 ## Introduction
 
