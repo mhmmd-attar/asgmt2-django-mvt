@@ -14,7 +14,9 @@ https://asgmt2-django-mvt.herokuapp.com/katalog/
 
 1. Client puts out a request to the Django web application
 2. The URLS component, urls.py, send out a request object as a function call to the View component according to the path requested
-3. The View component 
+3. The View component will fetch the HTML template for the response that will be shown to the user as a webpage
+4. If needed, the View component will also request the model component (models.py) to fetch some data to be shown on the webpage
+5. The View component will then return a response in the form an HTML webpage
 
 #### Explain why do we use virtual environments? Let's say, if we do not use the virtual environments, can we still create a Django web application?
 
