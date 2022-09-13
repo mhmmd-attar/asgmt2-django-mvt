@@ -8,11 +8,21 @@ Platform-Based Programming (CSGE602022) - Organized by the Faculty of Computer S
 https://asgmt2-django-mvt.herokuapp.com/katalog/
 
 # Assignment 2
-### Create a diagram containing client request to the Django web application and its response. Also explain the flow of the diagram and how the urls.py, views.py, models.py and HTML files connected each other.
+#### Create a diagram containing client request to the Django web application and its response. Also explain the flow of the diagram and how the urls.py, views.py, models.py and HTML files connected each other.
 
-### Explain why do we use virtual environments? Let's say, if we do not use the virtual environments, can we still create a Django web application?
+HTTP Request --------> URLS (urls.py)
+                              |
+                              V
+Model (models.py) <--> View (views.py) -----> HTTP Response (HTML)
+                              A
+                              |
+                      Template ( .html)
 
-### Explain how did you implement the steps on point 1 to point 4 above.
+
+
+#### Explain why do we use virtual environments? Let's say, if we do not use the virtual environments, can we still create a Django web application?
+
+#### Explain how did you implement the steps on point 1 to point 4 above.
 
 ## Introduction
 
