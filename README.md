@@ -8,7 +8,7 @@ Platform-Based Programming (CSGE602022) - Organized by the Faculty of Computer S
 https://asgmt2-django-mvt.herokuapp.com/katalog/
 
 # Assignment 2
-#### Create a diagram containing client request to the Django web application and its response. Also explain the flow of the diagram and how the urls.py, views.py, models.py and HTML files connected each other.
+### Create a diagram containing client request to the Django web application and its response. Also explain the flow of the diagram and how the urls.py, views.py, models.py and HTML files connected each other.
 
 ![image](https://user-images.githubusercontent.com/108500770/189872675-b9b2d97c-c239-4640-9644-ab06c2e7f5b5.png)
 
@@ -18,9 +18,11 @@ https://asgmt2-django-mvt.herokuapp.com/katalog/
 4. If needed, the View component will also request the model component (models.py) to fetch some data to be shown on the webpage
 5. The View component will then return a response in the form an HTML webpage
 
-#### Explain why do we use virtual environments? Let's say, if we do not use the virtual environments, can we still create a Django web application?
+### Explain why do we use virtual environments? Let's say, if we do not use the virtual environments, can we still create a Django web application?
+Virtual environments allow us to separate our projects into an environment of their own. These virtual environments for projects help dependencies management by isolating each project from the others. Using virtual environments is useful especially when you have multiple projects or you have one that will be maintained for a long time. Without this separation of concern principle, when you update a dependency on your system, some of your projects that utilize that dependency may not be compatible with the newer version, making them unrunnable.
 
-#### Explain how did you implement the steps on point 1 to point 4 above.
+### Explain how did you implement the steps on point 1 to point 4 above.
+
 
 ## Introduction
 
