@@ -10,8 +10,11 @@ https://asgmt2-django-mvt.herokuapp.com/katalog/
 # Assignment 2
 #### Create a diagram containing client request to the Django web application and its response. Also explain the flow of the diagram and how the urls.py, views.py, models.py and HTML files connected each other.
 
-![image](https://user-images.githubusercontent.com/108500770/189870909-5352a229-4c7b-4cd3-aa2e-3ceb851f0f65.png)
+![image](https://user-images.githubusercontent.com/108500770/189872675-b9b2d97c-c239-4640-9644-ab06c2e7f5b5.png)
 
+1. Client puts out a request to the Django web application
+2. The URLS component, urls.py, send out a request object as a function call to the View component according to the path requested
+3. The 
 
 #### Explain why do we use virtual environments? Let's say, if we do not use the virtual environments, can we still create a Django web application?
 
@@ -112,3 +115,14 @@ This template was based on [PBP Odd Term 2021/2022](https://gitlab.com/PBP-2021/
 [Tutorial 0]: https://pbp-fasilkom-ui.github.io/ganjil-2023/en/assignments/tutorial/tutorial-0
 [Visual Studio Code]: https://code.visualstudio.com/
 [PyCharm]: https://www.jetbrains.com/pycharm/
+
+## Misc
+
+HTTP Request --------> URLS (urls.py)
+                              |
+                              V
+Model (models.py) <--> View (views.py) ---> HTTP Response (HTML)
+                              Ʌ
+                              |
+                     Template ( .html)
+
