@@ -11,8 +11,8 @@ https://asgmt2-django-mvt.herokuapp.com/katalog/
 #### Create a diagram containing client request to the Django web application and its response. Also explain the flow of the diagram and how the urls.py, views.py, models.py and HTML files connected each other.
 
 HTTP Request --------> URLS (urls.py)
-                                    |asd
-                              V
+                              |
+                              V
 Model (models.py) <--> View (views.py) -----> HTTP Response (HTML)
                               A
                               |
