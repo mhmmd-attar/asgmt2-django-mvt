@@ -7,6 +7,13 @@ Platform-Based Programming (CSGE602022) - Organized by the Faculty of Computer S
 ## Application
 https://asgmt2-django-mvt.herokuapp.com/katalog/
 
+# Assignment 2
+### Create a diagram containing client request to the Django web application and its response. Also explain the flow of the diagram and how the urls.py, views.py, models.py and HTML files connected each other.
+
+### Explain why do we use virtual environments? Let's say, if we do not use the virtual environments, can we still create a Django web application?
+
+### Explain how did you implement the steps on point 1 to point 4 above.
+
 ## Introduction
 
 This repository is a template that is designed to help students who take the Platform-Based Development/Programming Course (CSGE602022) to know the structure of a Django Web application project, including the files and configurations that are important in running the application. You can freely copy the contents of this repository or utilise this repository as a learning material and also as a starting code to build a Django Web application project.
