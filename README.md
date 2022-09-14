@@ -27,6 +27,8 @@ Virtual environments allow us to separate our projects into an environment of th
 3. The data that has been returned to the function in views.py are used as arguments for the render function. This render function returns an HttpResponse object that contains a string translated by a function in the Django library, render_to_string()
 4. Deploying the Django app starts with creating a new app in Heroku. I then created some files, namely Procfile, dpl.yml, and .gitignore, then added some configurations in settings.py. Then, I added two repository secrets that contain my Heroku account's API key and the name of the newly created app in Heroku. After all that, I just had to rerun the deployment of my app on GitHub
 
+<br><br>
+
 ## Introduction
 
 This repository is a template that is designed to help students who take the Platform-Based Development/Programming Course (CSGE602022) to know the structure of a Django Web application project, including the files and configurations that are important in running the application. You can freely copy the contents of this repository or utilise this repository as a learning material and also as a starting code to build a Django Web application project.
