@@ -26,6 +26,7 @@ Virtual environments allow us to separate our projects into an environment of th
 4. Deploying the Django app starts with creating a new app in Heroku. I then created some files, namely Procfile, dpl.yml, and .gitignore, then added some configurations in settings.py. Then, I added two repository secrets that contain my Heroku account's API key and the name of the newly created app in Heroku. After all that, I just had to rerun the deployment of my app on GitHub
 <br>
 <hr>
+
 *Read this in other languages: [Indonesian](README.id.md), [English](README.md)*
 
 ## Introduction
