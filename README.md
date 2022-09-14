@@ -2,8 +2,6 @@
 
 Platform-Based Programming (CSGE602022) - Organized by the Faculty of Computer Science Universitas Indonesia, Odd Semester 2022/2023
 
-*Read this in other languages: [Indonesian](README.id.md), [English](README.md)*
-
 ## Application
 https://asgmt2-django-mvt.herokuapp.com/katalog/
 
@@ -26,9 +24,9 @@ Virtual environments allow us to separate our projects into an environment of th
 2. urls.py contains a list of path functions that map the requested path to its appropriate function in views.py
 3. The data that has been returned to the function in views.py are used as arguments for the render function. This render function returns an HttpResponse object that contains a string translated by a function in the Django library, render_to_string()
 4. Deploying the Django app starts with creating a new app in Heroku. I then created some files, namely Procfile, dpl.yml, and .gitignore, then added some configurations in settings.py. Then, I added two repository secrets that contain my Heroku account's API key and the name of the newly created app in Heroku. After all that, I just had to rerun the deployment of my app on GitHub
-
 <br>
 <hr>
+*Read this in other languages: [Indonesian](README.id.md), [English](README.md)*
 
 ## Introduction
 
