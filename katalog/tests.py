@@ -7,4 +7,4 @@ class KatalogTest(TestCase):
 
     def testKatalogUsingTemplate(self):
         response = Client().get('/katalog')
-        self.assertTemplateUsed(response, 'katalog.html')
+        self.assertTemplateUsed(response, 'katalog/templates/katalog.html')
