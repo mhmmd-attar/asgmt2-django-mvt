@@ -1,10 +1,10 @@
-from django.test import TestCase, Client
+from django.test import TestCase
 
 class KatalogTest(TestCase):
     def testKatalogExists(self):
-        response = Client().get('/katalog/')
+        response = self.client.get('/katalog/')
         self.assertEqual(response.status_code, 200)
 
     def testKatalogUsingTemplate(self):
-        response = Client().get('/katalog')
-        self.assertTemplateUsed(response, 'katalog/templates/katalog.html')
+        response = self.client.get('/katalog/')
+        self.assertTemplateUsed(response, 'katalog.html')
