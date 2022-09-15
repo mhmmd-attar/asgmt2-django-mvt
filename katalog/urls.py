@@ -6,5 +6,4 @@ app_name = 'katalog'
 
 urlpatterns = [
     path('', show_katalog, name='show_katalog'),
-    path('katalog/', include('katalog.urls')),
 ]
