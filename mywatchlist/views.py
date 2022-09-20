@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from mywatchlist.models import MyWatchList
 from django.http import HttpResponse
 from django.core import serializers
 
 # TODO: Create your views here.
+def redirect_to_html(request):
+    return redirect('/mywatchlist/html/')
+
 def show_mywatchlist(request):
     data_mywatchlist_item = MyWatchList.objects.all()
     context = {
