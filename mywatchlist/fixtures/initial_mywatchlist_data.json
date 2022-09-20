@@ -1,0 +1,112 @@
+[
+        {
+        "model": "mywatchlist.MyWatchList",
+        "pk":1,
+        "fields":{
+            "watched": "Y",
+            "title": "Cruella",
+            "rating": 9,
+            "release_date": "2021-05-18",
+            "review": "Another great spin-off for a Disney villain"
+        }
+    },
+        {
+        "model": "mywatchlist.MyWatchList",
+        "pk":2,
+        "fields":{
+            "watched": "N",
+            "title": "Turning Red",
+            "rating": null,
+            "release_date": "2022-03-01",
+            "review": "-"
+        }
+    },
+        {
+        "model": "mywatchlist.MyWatchList",
+        "pk":3,
+        "fields":{
+            "watched": "N",
+            "title": "Sri Asih",
+            "rating": null,
+            "release_date": "2022-10-06",
+            "review": "-"
+        }
+    },
+        {
+        "model": "mywatchlist.MyWatchList",
+        "pk":4,
+        "fields":{
+            "watched": "Y",
+            "title": "The Taking of Deborah Logan",
+            "rating": 8,
+            "release_date": "2014-10-21",
+            "review": "Unsettling and terrifying"
+        }
+    },
+        {
+        "model": "mywatchlist.MyWatchList",
+        "pk":5,
+        "fields":{
+            "watched": "Y",
+            "title": "Get Out",
+            "rating": 7,
+            "release_date": "2017-03-17",
+            "review": "Interesting premise, enjoyable, but eh"
+        }
+    },
+        {
+        "model": "mywatchlist.MyWatchList",
+        "pk":6,
+        "fields":{
+            "watched": "N",
+            "title": "Pintu Terlarang",
+            "rating": null,
+            "release_date": "2009-01-22",
+            "review": "-"
+        }
+    },
+        {
+        "model": "mywatchlist.MyWatchList",
+        "pk":7,
+        "fields":{
+            "watched": "N",
+            "title": "A Quiet Place Part II",
+            "rating": null,
+            "release_date": "2021-05-26",
+            "review": "-"
+        }
+    },
+        {
+        "model": "mywatchlist.MyWatchList",
+        "pk":8,
+        "fields":{
+            "watched": "Y",
+            "title": "The Batman",
+            "rating": 10,
+            "release_date": "2022-03-02",
+            "review": "A new reboot where Batman is still young and understandably, an emo"
+        }
+    },   
+        {
+        "model": "mywatchlist.MyWatchList",
+        "pk":9,
+        "fields":{
+            "watched": "Y",
+            "title": "Shazam!",
+            "rating": 9,
+            "release_date": "2019-03-28",
+            "review": "A DCEU movie that doesn't feel like one; light and bright but also not overly comedic "
+        }
+    },
+        {
+        "model": "mywatchlist.MyWatchList",
+        "pk":10,
+        "fields":{
+            "watched": "Y",
+            "title": "Zack Snyder's Justice League",
+            "rating": 10,
+            "release_date": "2021-03-18",
+            "review": "A great recovery from Wheadon's"
+        }
+    } 
+]
