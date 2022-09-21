@@ -16,7 +16,11 @@ https://asgmt2-django-mvt.herokuapp.com/mywatchlist/
 
 
 ### Accessing the three URLs to retrieve all variants of mywatchlist data by using [Postman](https://www.postman.com/) or similar tools (e.g. [HTTPie](https://httpie.io/product), [Insomnia](https://insomnia.rest/)).
-
-
+#### HTML
+![image](https://user-images.githubusercontent.com/108500770/191486231-245249b5-5654-4127-8a28-54041a2050a0.png)
+#### XML
+![image](https://user-images.githubusercontent.com/108500770/191486315-0df18279-34b6-4237-8093-d76209943003.png)
+#### JSON
+![image](https://user-images.githubusercontent.com/108500770/191486378-4e891890-a9e3-47cd-9737-d7291a1b822e.png)
 <br>
 <hr>
