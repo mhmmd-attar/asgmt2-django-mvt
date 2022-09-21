@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
   {% block meta %}
   <title>My Watchlist</title>
+  <script type="dict/javascript">
+    var list_item = "{{ list_item }}"
+  </script>
   <script>
     function alertWatcher() {
-      var list_item = "{{ list_item }}"
       var watched = 0;
       var unwatched = 0;
       for (item in list_item) {
@@ -84,17 +86,27 @@
       <th>Release Date</th>
       <th>Review</th>
     </tr>
-
-    {% for item in list_item %}
-        <tr>
-            <td class="centered">{{ item.watched }}</td>
-            <td>{{ item.title }}</td>
-            <td class="centered">{{ item.rating }}</td>
-            <td class="centered">{{ item.release_date }}</td>
-            <td>{{ item.review }}</td>
-        </tr>
-    {% endfor %}
+    {% with watched=0 unwatched=0 %}
+      {% for item in list_item %}
+        {% if item.watched == "Y" %}
+          {{ watched|add:"1" }}
+        {% else %}
+          {{ unwatched|add:"1" }}
+        {% endif %}
+          <tr>
+              <td class="centered">{{ item.watched }}</td>
+              <td>{{ item.title }}</td>
+              <td class="centered">{{ item.rating }}</td>
+              <td class="centered">{{ item.release_date }}</td>
+              <td>{{ item.review }}</td>
+          </tr>
+      {% endfor %}
 
   </table>
-
+      {% if watched >= unwatched %}
+      <h3>Congratulations {{watched}} {{unwatched}}</h3>
+      {% else %}
+      <h3>Woah</h3>
+      {% endif %}
+    {% endwith %}
   {% endblock content %}
