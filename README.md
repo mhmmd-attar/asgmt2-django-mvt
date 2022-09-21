@@ -13,7 +13,11 @@ https://asgmt2-django-mvt.herokuapp.com/mywatchlist/
 
 
 ### Explain how do you complete the tasks in this assignment!
-
+1. Since I'm using an already existing Django project repository, I started right away with `python manage.py startapp mywatchlist`. In views.py in the app folder, I created a basic view functions that will return an HTTP response with an html template. I created a folder "templates" and an html file "mywatchlist.html" inside
+2. Back to mywatchlist folder, I created urls.py and filled in paths for my app. I also added a path for the app in settings.py in the project folder
+3. In models.py, I created a Model class with 5 attributs for objects in my app. Then, I ran `python manage.py makemigrations` and `python manage.py migrate`
+4. I then created a new folder "fixtures" and a new file inside, "initial_mywatchlist_data.json". In that file, I added 10 data entries, each for an object having 5 attributes. Then, I ran `python manage.py loaddata initial_mywatchlist_data.json`
+5. 
 
 ### Accessing the three URLs to retrieve all variants of mywatchlist data by using [Postman](https://www.postman.com/) or similar tools (e.g. [HTTPie](https://httpie.io/product), [Insomnia](https://insomnia.rest/)).
 #### HTML
