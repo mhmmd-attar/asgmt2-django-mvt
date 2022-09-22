@@ -9,10 +9,15 @@ def redirect_to_html(request):
 
 def show_mywatchlist(request):
     data_mywatchlist_item = MyWatchList.objects.all()
+    watched = 0
+    for item in data_mywatchlist_item:
+            watched += 1 if item.watched == 'Y' else -1
+    message = "Congratulations, you have watched a lot of movies" if watched >=0 else "Woah, you need to watch more movies"
     context = {
         'list_item': data_mywatchlist_item,
         'name': 'Mohammad Attar',
         'npm': '2106657992',
+        'message': message,
     }
     return render(request, "mywatchlist.html", context)
 
