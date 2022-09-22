@@ -35,5 +35,6 @@ Webpages and web applications usually fetch and send data to be displayed, proce
 
 ## References
 https://medium.com/@oazzat19/what-is-the-difference-between-html-vs-xml-vs-json-254864972bbb
+https://www.javatpoint.com/json-vs-xml
 <br>
 <hr>
