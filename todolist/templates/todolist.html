@@ -8,22 +8,18 @@
 
     <h1>Assignment #4 PBP/PBD</h1>
 
-    <h4>Name: </h4>
+    <h4>Username: </h4>
     <p>{{ name }}</p>
 
-    <h4>Student ID: </h4>
-    <p>{{ npm }}</p>
-
+    <button><a href="{% url 'todolist:create_task' %}">Create a New Task</a></button>
     <table>
       <tr>
-        <th>User</th>
         <th>Date</th>
         <th>Title</th>
         <th>Description</th>
       </tr>
         {% for item in list_item %}
             <tr>
-                <td>{{ item.user }}</td>
                 <td>{{ item.date }}</td>
                 <td>{{ item.title }}</td>
                 <td>{{ item.description }}</td>
