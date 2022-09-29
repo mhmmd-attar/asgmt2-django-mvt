@@ -27,8 +27,8 @@
                 <td>{{ item.title }}</td>
                 <td>{{ item.description }}</td>
                 <td>{{ item.is_finished }}</td>
-                <td><button><a href="todolist:finished/{{ item.id }}">Update Status</a></button></td>
-                <td><button><a href="todolist:delete/{{ item.id }}">Delete Task</a></button></td>
+                <td><button><a href="finished/{{ item.id }}">Update Status</a></button></td>
+                <td><button><a href="delete/{{ item.id }}">Delete Task</a></button></td>
             </tr>
         {% endfor %}
     </table>
