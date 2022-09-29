@@ -17,13 +17,18 @@
         <th>Date</th>
         <th>Title</th>
         <th>Description</th>
+        <th>Finished</th>
+        <th>Update?</th>
+        <th>Delete?</th>
       </tr>
         {% for item in list_item %}
             <tr>
                 <td>{{ item.date }}</td>
                 <td>{{ item.title }}</td>
                 <td>{{ item.description }}</td>
-                
+                <td>{{ item.is_finished }}</td>
+                <td><button><a href="todolist:finished/{{ item.id }}">Update Status</a></button></td>
+                <td><button><a href="todolist:delete/{{ item.id }}">Delete Task</a></button></td>
             </tr>
         {% endfor %}
     </table>

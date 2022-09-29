@@ -1,7 +1,7 @@
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
@@ -70,3 +70,14 @@ def create_task(request):
 
     context = {'form':form}
     return render(request, 'create_task.html', context)
+
+def finished_status(request, id):
+    task = get_object_or_404(Task, pk=id)
+    task.is_finished = not task.is_finished
+    task.save()
+    return HttpResponseRedirect(reverse('todolist:show_todolist'))
+
+def delete_task(request, id):
+    task = get_object_or_404(Task, pk=id)
+    task.delete()
+    return HttpResponseRedirect(reverse('todolist:show_todolist'))

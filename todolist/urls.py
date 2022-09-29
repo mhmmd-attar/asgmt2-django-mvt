@@ -9,4 +9,6 @@ urlpatterns = [
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'), 
     path('create-task/', create_task, name='create_task'), 
+    path('finished/<int:id>', finished_status, name='finished'),
+    path('delete/<int:id>', delete_task, name='delete'), 
 ]

@@ -7,3 +7,4 @@ class Task(models.Model):
     date = models.DateField(default=datetime.now)
     title = models.CharField(max_length=64)
     description = models.TextField()
+    is_finished = models.BooleanField(default=False)
