@@ -1,4 +1,4 @@
-import datetime
+from datetime import date, datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -31,7 +31,7 @@ def login_user(request):
         if user is not None:
             login(request, user) # login first
             response = HttpResponseRedirect(reverse("todolist:show_todolist")) # create response
-            response.set_cookie('last_login', str(datetime.datetime.now())) # create last_login cookie and add it to response
+            response.set_cookie('last_login', str(datetime.now())) # create last_login cookie and add it to response
             return response
         else:
             messages.info(request, 'Wrong Username or Password!')
@@ -57,6 +57,7 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
+@login_required(login_url='/todolist/login/')
 def create_task(request):
     form = CreateTask()
     if request.method == "POST":
@@ -68,15 +69,17 @@ def create_task(request):
             messages.success(request, 'New task successfully created!')
             return redirect('todolist:show_todolist')
 
-    context = {'form':form}
+    context = {'form':form, 'name':request.user.get_username(), 'date':datetime.now().strftime('%x')}
     return render(request, 'create_task.html', context)
 
+@login_required(login_url='/todolist/login/')
 def finished_status(request, id):
     task = get_object_or_404(Task, pk=id)
     task.is_finished = not task.is_finished
     task.save()
     return HttpResponseRedirect(reverse('todolist:show_todolist'))
 
+@login_required(login_url='/todolist/login/')
 def delete_task(request, id):
     task = get_object_or_404(Task, pk=id)
     task.delete()

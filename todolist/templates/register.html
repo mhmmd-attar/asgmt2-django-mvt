@@ -4,30 +4,61 @@
 <title>Account Registration</title>
 {% endblock meta %}
 
-{% block content %}
-
-<div class = "login">
-    <h1>Registration Form</h1>
-
-        <form method="POST" >
-            {% csrf_token %}
-            <table>
-                {{ form.as_table }}
-                <tr>
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Register"/></td>
-                </tr>
-            </table>
-        </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-        </ul>
-    {% endif %}
-
+{% block navbar %}
+<div class="d-flex">
+    <a class="navbar-brand" href="">To-Do List</a>
 </div>
 
+<div class="navbar-nav">
+    <a class="nav-link" aria-current="page" href="{% url 'example_app:index' %}">Home</a>
+</div>
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarElements">
+    <div class="navbar-nav">
+        <a class="nav-link" aria-current="page" href="{% url 'todolist:login' %}">Log in</a>
+    </div>
+</div>
+{% endblock navbar %}
+
+{% block content %}
+
+<!-- Section: Design Block -->
+<section class="text-center">
+    <!-- Background image -->
+    <div class="p-5 bg-image" style="
+          background-color: hsl(147, 50%, 35%);
+          height: 300px;
+          "></div>
+    <!-- Background image -->
+  
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+          margin-top: -100px;
+          background: hsla(0, 0%, 100%, 0.8);
+          backdrop-filter: blur(30px);
+          ">
+      <div class="card-body py-5 px-md-5">
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="fw-bold mb-5">Register a new account</h2>
+            <form method="POST" class="d-flex justify-content-center">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" class="btn btn-primary btn-block mb-4" name="submit" value="Register"/></td>
+                    </tr>
+                </table>
+            </form>
+            {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock content %}

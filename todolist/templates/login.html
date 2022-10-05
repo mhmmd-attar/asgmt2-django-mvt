@@ -4,42 +4,93 @@
 <title>Login</title>
 {% endblock meta %}
 
+{% block navbar %}
+<div class="d-flex">
+    <a class="navbar-brand" href="">To-Do List</a>
+</div>
+
+<div class="navbar-nav">
+    <a class="nav-link" aria-current="page" href="{% url 'example_app:index' %}">Home</a>
+</div>
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarElements">
+    <div class="navbar-nav">
+        <a class="nav-link" aria-current="page" href="{% url 'todolist:register' %}">Create new account</a>
+    </div>
+</div>
+{% endblock navbar %}
+
 {% block content %}
 
-<div class = "login">
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+    <style>
+      .background-radial-gradient {
+        background-color: hsl(147, 50%, 15%);
+        height: 100%;
+        padding: 7%;
+        text-align: center;
+        background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(147, 50%, 35%) 15%,
+            hsl(147, 50%, 30%) 35%,
+            hsl(147, 50%, 20%) 75%,
+            hsl(147, 50%, 18%) 80%,
+            transparent 100%),
+          radial-gradient(1250px circle at 100% 100%,
+            hsl(147, 50%, 45%) 15%,
+            hsl(147, 50%, 30%) 35%,
+            hsl(147, 50%, 20%) 75%,
+            hsl(147, 50%, 19%) 80%,
+            transparent 100%);
+      }
+  
+      .bg-glass {
+        background-color: hsla(0, 0%, 100%, 0.9) !important;
+        backdrop-filter: saturate(200%) blur(25px);
+      }
+    </style>
+  
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 login-wrapper">
+      <div class="row gx-lg-5 align-items-center mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+          <h1 class="mt-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+            Log in
+          </h1>
+          <h5 class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+            Please enter your username and password!
+          </h5>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative text-center">
+          <div class="card bg-glass">
+            <div class="card-body px-4 py-5 px-md-5">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="form-outline mb-4">
+                        <input type="text" id="typeUsernameX" name="username" placeholder="Username" class="form-control">
+                        <label class="form-label" for="typeUsernameX">Username</label>
+                    </div>
 
-    <h1>Login</h1>
+                    <div class="form-outline mb-4">
+                        <input type="password" id="typePasswordX" name="password" placeholder="Password" class="form-control">
+                        <label class="form-label" for="typePasswordX">Password</label>
+                    </div>
 
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Log in</button>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
 
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    Don't have an account? <a href="{% url 'todolist:register' %}">Create Account</a>
-
-</div>
+                </form>
+                    <p class="mb-0">Don't have an account? <a href="{% url 'todolist:register' %}" class="text-black-50 fw-bold">Sign Up</a></p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 {% endblock content %}
