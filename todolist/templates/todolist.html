@@ -2,6 +2,36 @@
 
 {% block meta %}
 <title>To-Do List</title>
+<style>
+  .background-radial-gradient {
+    background-color: hsl(147, 50%, 15%);
+    min-height: 90%;
+    padding: 5%;
+    text-align: center;
+    background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(147, 50%, 35%) 15%,
+        hsl(147, 50%, 30%) 35%,
+        hsl(147, 50%, 20%) 75%,
+        hsl(147, 50%, 18%) 80%,
+        transparent 100%),
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(147, 50%, 45%) 15%,
+        hsl(147, 50%, 30%) 35%,
+        hsl(147, 50%, 20%) 75%,
+        hsl(147, 50%, 19%) 80%,
+        transparent 100%);
+  }
+  .card-text {
+    font-size: 15px;
+  }
+  .container {
+    align-content: center;
+  }
+  .task-cards:hover {
+    transform: scale(1.1);
+
+  }
+</style>
 {% endblock meta %}
   
 {% block navbar %}
@@ -24,37 +54,11 @@
 
 {% block content %}
 <section class="background-radial-gradient overflow-hidden" style="min-height: 100vh">
-  <style>
-    .background-radial-gradient {
-      background-color: hsl(147, 50%, 15%);
-      min-height: 90%;
-      padding: 5%;
-      text-align: center;
-      background-image: radial-gradient(650px circle at 0% 0%,
-          hsl(147, 50%, 35%) 15%,
-          hsl(147, 50%, 30%) 35%,
-          hsl(147, 50%, 20%) 75%,
-          hsl(147, 50%, 18%) 80%,
-          transparent 100%),
-        radial-gradient(1250px circle at 100% 100%,
-          hsl(147, 50%, 45%) 15%,
-          hsl(147, 50%, 30%) 35%,
-          hsl(147, 50%, 20%) 75%,
-          hsl(147, 50%, 19%) 80%,
-          transparent 100%);
-    }
-    .card-text {
-      font-size: 15px;
-    }
-    .container {
-      align-content: center;
-    }
-  </style>
   <div class="container my-2 ">
     <div class="row">
       {% for item in list_item %}
       <div class="col my-3">
-        <div class="card" style="width: 240px; height: 360px;">
+        <div class="card task-cards" style="width: 240px; height: 360px;">
           <div class="card-body">
             <h5 class="card-title mb-0">{{ item.title }}</h5>
             <p class="card-text mt-0">Created {{ item.date }}</p>
