@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>To-Do List</title>
+<style>
+  .background-radial-gradient {
+    background-color: hsl(147, 50%, 15%);
+    min-height: 90%;
+    padding: 5%;
+    text-align: center;
+    background-image: radial-gradient(650px circle at 0% 0%,
+        hsl(147, 50%, 35%) 15%,
+        hsl(147, 50%, 30%) 35%,
+        hsl(147, 50%, 20%) 75%,
+        hsl(147, 50%, 18%) 80%,
+        transparent 100%),
+      radial-gradient(1250px circle at 100% 100%,
+        hsl(147, 50%, 45%) 15%,
+        hsl(147, 50%, 30%) 35%,
+        hsl(147, 50%, 20%) 75%,
+        hsl(147, 50%, 19%) 80%,
+        transparent 100%);
+  }
+  .card-text {
+    font-size: 15px;
+  }
+  .container {
+    align-content: center;
+  }
+  .task-cards:hover {
+    transform: scale(1.1);
+
+  }
+</style>
+{% endblock meta %}
+  
+{% block navbar %}
+<div class="d-flex">
+    <a class="navbar-brand" href="">To-Do List</a>
+</div>
+
+<div class="navbar-nav">
+    <a class="nav-link" aria-current="page" href="{% url 'example_app:index' %}">Home</a>
+</div>
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarElements">
+    <div class="navbar-nav">
+        <a class="nav-link" type="button" data-bs-toggle="modal" data-bs-target="#newTaskModal">Create a New Task</a>
+        <a class="nav-link disable"><span class="fas fa-user-alt fa-fw"></span>{{ name }}</a>
+        <a class="nav-link" type="button" href="{% url 'todolist:logout' %}">Log out</a>
+    </div>
+</div>
+{% endblock navbar %}
+
+{% block content %}
+<div class="modal fade" id="newTaskModal" tabindex="-1" aria-labelledby="newTaskModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form id="form" onsubmit="return false">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="newTaskModalLabel">Create a New Task</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-outline mb-2">
+            <input type="text" class="form-control" name="title" required placeholder="Title">
+          </div>
+          <div class="form-outline mb-4">
+            <textarea type="text" class="form-control" name="description" required placeholder="Task description..." rows="12"></textarea>
+          </div>
+          <p>Task creation date: {{ date }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary" onclick="createTask()" data-bs-toggle="modal" data-bs-target="#newTaskModal">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<section class="background-radial-gradient overflow-hidden" style="min-height: 100vh">
+  <div class="container my-2 ">
+    <div class="row" id="tasks">
+    </div>
+  </div>
+</section>  
+
+<script>
+  async function getTodolist() {
+    return fetch("{% url 'todolist:json' %}").then((res) => res.json())
+  }
+
+  async function refreshTodolist() {
+        document.getElementById("tasks").innerHTML = "";
+        const todolist = await getTodolist();
+        let htmlString = '';
+        todolist.forEach((item) => {
+          htmlString += `\n<div class="col my-3">
+        <div class="card task-cards" style="width: 240px; height: 360px;">
+          <div class="card-body">
+            <h5 class="card-title mb-0">${item.fields.title}</h5>
+            <p class="card-text mt-0">Created ${item.fields.date}</p>
+            <textarea class="card-text" readonly rows="8" cols="27">${item.fields.description}</textarea>
+            <p class="card-text">Finished: ${item.fields.is_finished}</p>
+            <div class="row">
+              <div class="col mx-0">
+                <button type="button" class="btn btn-block btn-dark card-text update-btn" id=${item.pk} onclick="updateTask(this.id)">Update status</button>
+              </div>
+              <div class="col mx-0">
+                <button type="button" class="btn btn-block btn-danger card-text delete-btn" id=${item.pk} onclick="deleteTask(this.id)">Delete Task</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>` 
+        });
+        
+        document.getElementById("tasks").innerHTML = htmlString;
+  };
+
+  function updateTask(id) {
+    var url = "{% url 'todolist:update_ajax' 1 %}".replace('1', id);
+    fetch(url).then(refreshTodolist)
+  };
+
+  function deleteTask(id) {
+    var url = "{% url 'todolist:delete_ajax' 1 %}".replace('1', id);
+    fetch(url).then(refreshTodolist)
+  };
+
+  function createTask() {
+    fetch("{% url 'todolist:add_task' %}", {
+          method: "POST",
+          body: new FormData(document.querySelector('#form'))
+      }).then(refreshTodolist);
+    return false
+  };
+
+  `$(document).ready(function() {
+    $('#newTaskModal').on('hidden.bs.modal', function (e) {
+      $(this).find("input,textarea").val('').end()
+    });
+  })`
+
+  refreshTodolist()
+</script>
+
+{% endblock content %}

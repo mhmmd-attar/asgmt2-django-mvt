@@ -1,5 +1,6 @@
 from datetime import date, datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
+from django.core import serializers
 from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -30,8 +31,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user) # login first
-            response = HttpResponseRedirect(reverse("todolist:show_todolist")) # create response
-            response.set_cookie('last_login', str(datetime.now())) # create last_login cookie and add it to response
+            response = HttpResponseRedirect(reverse("todolist:ajax")) # create response
             return response
         else:
             messages.info(request, 'Wrong Username or Password!')
@@ -47,14 +47,13 @@ def show_todolist(request):
     context = {
         'list_item': data_todolist_item,
         'name': user.get_username(),
-        'last_login': request.COOKIES['last_login'],
     }
     return render(request, "todolist.html", context)
 
+@login_required(login_url='/todolist/login/')
 def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse('todolist:login'))
-    response.delete_cookie('last_login')
     return response
 
 @login_required(login_url='/todolist/login/')
@@ -84,3 +83,42 @@ def delete_task(request, id):
     task = get_object_or_404(Task, pk=id)
     task.delete()
     return HttpResponseRedirect(reverse('todolist:show_todolist'))
+
+def todolist_json(request):
+    user = None
+    if request.user.is_authenticated:
+        user = request.user
+    data = Task.objects.filter(user=user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+@login_required(login_url='/todolist/login/')
+def show_todolist_ajax(request):
+    user = None
+    if request.user.is_authenticated:
+        user = request.user
+    context = {
+        'name': user.get_username(),
+        'date': datetime.now().strftime('%x'),
+    }
+    return render(request, "todolist_ajax.html", context)
+
+def update_ajax(request, id):
+    task = get_object_or_404(Task, pk=id)
+    task.is_finished = not task.is_finished
+    task.save()
+
+def delete_ajax(request, id):
+    task = get_object_or_404(Task, pk=id)
+    task.delete()
+
+def add_task(request):
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        description = request.POST.get("description")
+
+        new_task = Task(user=request.user, title=title, description=description)
+        new_task.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
