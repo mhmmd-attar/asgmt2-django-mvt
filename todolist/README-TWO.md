@@ -13,8 +13,15 @@ https://asgmt2-django-mvt.herokuapp.com/todolist/ajax
 4. Asynchronous programs can produce larger throughput than synchronous ones since multiple operations can run at the same time
 
 ### When Implementing Javascript and AJAX, there is an application in the paradigms of Event-Driven Programming. Describe the reasoning for those paradigms and state some examples of its application.
+In computer programming, event-driven programming is a programming paradigm in which the flow of the program is determined by events such as user actions (mouse clicks, key presses), sensor outputs, or message passing from other programs or operation threads. This paradigm is applied when implementing Javascript, especially with AJAX, where we want to provide functionalities when users interact with elements in our page. A few examples of this can be seen in this application, implemented with JS and JQuery functions that utilize AJAX, such as, buttons to update and delete the tasks when clicked, modal that reset everytime it is closed, and a form that creates a new object and reloads the page partially when submitted to show the new list of tasks.
 
 ### Describe the implementation of asynchronous programming in AJAX.
+1. Some elements in the HTML act as certain events' handler that will call a JS function
+2. Said function will send a request to a view function to fetch or send data or execute some operations without directing to another new page or reloading the page.
+3. The server receives or returns the data sent/requested by the view function
+4. The JS function, if it requires the data from the view, will receive it in a certain form, mainly JSON, that is parsed in the view
+5. The function can execute the next part that can include processing the received the data, executing the next commands, or call another function.
+6. These operations is executed based on their functionalities
 
 ### Explain how you would implement the checklist above.
 
