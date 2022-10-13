@@ -106,10 +106,12 @@ def update_ajax(request, id):
     task = get_object_or_404(Task, pk=id)
     task.is_finished = not task.is_finished
     task.save()
+    return HttpResponseNotFound()
 
 def delete_ajax(request, id):
     task = get_object_or_404(Task, pk=id)
     task.delete()
+    return HttpResponseNotFound()
 
 def add_task(request):
     if request.method == 'POST':
