@@ -138,11 +138,11 @@
     return false
   };
 
-  `$(document).ready(function() {
-    $('#newTaskModal').on('hidden.bs.modal', function (e) {
-      $(this).find("input,textarea").val('').end()
+  $(document).ready(function() {
+    $('#newTaskModal').on('hidden.bs.modal', function () {
+      $('#newTaskModal').find('form').trigger("reset");
     });
-  })`
+  })
 
   refreshTodolist()
 </script>
