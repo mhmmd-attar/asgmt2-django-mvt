@@ -102,17 +102,20 @@ def show_todolist_ajax(request):
     }
     return render(request, "todolist_ajax.html", context)
 
+@login_required(login_url='/todolist/login/')
 def update_ajax(request, id):
     task = get_object_or_404(Task, pk=id)
     task.is_finished = not task.is_finished
     task.save()
     return HttpResponseNotFound()
 
+@login_required(login_url='/todolist/login/')
 def delete_ajax(request, id):
     task = get_object_or_404(Task, pk=id)
     task.delete()
     return HttpResponseNotFound()
 
+@login_required(login_url='/todolist/login/')
 def add_task(request):
     if request.method == 'POST':
         title = request.POST.get("title")
