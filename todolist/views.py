@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
-from todolist.models import Task
+from todolist.models import Task, TaskCount
 from todolist.forms import CreateTask
 
 def register(request):
@@ -99,6 +99,7 @@ def show_todolist_ajax(request):
     context = {
         'name': user.get_username(),
         'date': datetime.now().strftime('%x'),
+        'count': TaskCount.objects.filter(user=request.user).count(),
     }
     return render(request, "todolist_ajax.html", context)
 
@@ -123,6 +124,9 @@ def add_task(request):
 
         new_task = Task(user=request.user, title=title, description=description)
         new_task.save()
+
+        new_count = TaskCount(request.user, new_task)
+        new_count.save()
 
         return HttpResponse(b"CREATED", status=201)
 

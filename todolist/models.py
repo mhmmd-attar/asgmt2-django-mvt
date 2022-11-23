@@ -8,3 +8,7 @@ class Task(models.Model):
     title = models.CharField(max_length=64)
     description = models.TextField()
     is_finished = models.BooleanField(default=False)
+
+class TaskCount(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)

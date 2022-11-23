@@ -88,6 +88,8 @@
 </section>  
 
 <script>
+  var taskCount = {{ count }};
+
   async function getTodolist() {
     return fetch("{% url 'todolist:json' %}").then((res) => res.json())
   }
@@ -95,7 +97,10 @@
   async function refreshTodolist() {
         document.getElementById("tasks").innerHTML = "";
         const todolist = await getTodolist();
-        let htmlString = '';
+        let htmlString = `<div>
+    <h3 style="color: white">Items To-Do added:</h3>
+    <p style="color: white">${taskCount}</p>
+  </div>`;
         todolist.forEach((item) => {
           htmlString += `\n<div class="col my-3">
         <div class="card task-cards" style="width: 240px; height: 360px;">
@@ -126,11 +131,13 @@
   };
 
   function deleteTask(id) {
+    taskCount -= 1;
     var url = "{% url 'todolist:delete_ajax' 1 %}".replace('1', id);
     fetch(url).then(refreshTodolist)
   };
 
   function createTask() {
+    taskCount += 1;
     fetch("{% url 'todolist:add_task' %}", {
           method: "POST",
           body: new FormData(document.querySelector('#form'))
