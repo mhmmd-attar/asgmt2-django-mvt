@@ -33,6 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -63,10 +65,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'project_django.urls'
-
-CORS_ALLOWED_ALL_ORIGINS = True
-
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
 TEMPLATES = [
     {
@@ -132,6 +130,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+CORS_ALLOWED_ALL_ORIGINS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
